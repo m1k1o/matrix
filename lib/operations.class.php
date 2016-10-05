@@ -81,4 +81,41 @@ class Operations
 		
 		return new Matrix($m);
 	}
+	
+	// Determinant matice
+	public static function determinant(Matrix $m1){
+		$size = $m1->get_size();
+		
+		if($size[0] != $size[1]){
+			throw new Exception("Iba zo štvorcovej matice možno vypočítať determinant.");
+		}
+		
+		$size = $size[0];
+		
+		// Ak je velkost 1x1, je to ten jeden prvok
+		if($size == 1){
+			return $m1->get(0, 0);
+		}
+		
+		// Ak je velkost 2x2
+		if($size == 2){
+			return
+				  $m1->get(0, 0) * $m1->get(1, 1)
+				- $m1->get(0, 1) * $m1->get(1, 0);
+		}
+		
+		// Ak je velkost 3x3
+		if($size == 3){
+			return 
+				  $m1->get(0, 0) * $m1->get(1, 1) * $m1->get(2, 2) 
+				+ $m1->get(0, 1) * $m1->get(1, 2) * $m1->get(2, 0) 
+				+ $m1->get(0, 2) * $m1->get(1, 0) * $m1->get(2, 1) 
+				
+				- $m1->get(2, 0) * $m1->get(1, 1) * $m1->get(0, 2)
+				- $m1->get(2, 1) * $m1->get(1, 2) * $m1->get(0, 0)
+				- $m1->get(2, 2) * $m1->get(1, 0) * $m1->get(0, 1);
+		}
+		
+		throw new Exception("Zatiaľ sú podporované iba výpočty determinantov pre matice do veľkosti 3");
+	}
 }
