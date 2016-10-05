@@ -2,12 +2,12 @@
 
 class Compose
 {
-  private $_matrix;
+	private $_matrix;
 	
-  public function __construct(Matrix &$_matrix){
-    $this->_matrix = $_matrix;
-  }
-  
+	public function __construct(Matrix &$_matrix){
+		$this->_matrix = $_matrix;
+	}
+	
 	// Zobrazí ako tabuľku
 	public function display(){
 		//$log = Log::get();
